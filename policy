@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpiderSling | Official Game</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #06061a;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #3df0ff;
+        }
+        h1 { color: #f0c512; }
+        p { line-height: 1.6; color: #aaddff; }
+        a { color: #3df0ff; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        .links { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🕷️ SpiderSling</h1>
+        <p>An endless grappling hook runner built for mobile.</p>
+        <p>Master the physics, dodge the saws, and collect flies to unlock rare skins!</p>
+
+        <div class="links">
+            <a href="mailto:support@shannonhouseproductions.com">📧 Contact Support</a>
+            
+            <a href="privacy.html">📄 Privacy Policy</a>
+        </div>
+    </div>
+
+</body>
+</html>

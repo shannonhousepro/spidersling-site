@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpiderSling | Endless Grappling Arcade</title>
+  <style>
+    :root {
+      --bg-dark: #06061a;
+      --bg-mid: #100830;
+      --cyan: #3dffaa;
+      --magenta: #ff3dbe;
+      --gold: #f0c512;
+      --text-main: #e0e0ff;
+      --font-mono: 'Courier New', Courier, monospace;
+      --font-sans: system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(circle at 50% 0%, var(--bg-mid) 0%, var(--bg-dark) 70%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(240, 197, 18, 0.4);
+      margin-bottom: 1rem;
+      letter-spacing: -2px;
+    }
+
+    .accent-cyan { color: var(--cyan); text-shadow: 0 0 10px rgba(61, 255, 170, 0.4); }
+    .accent-magenta { color: var(--magenta); text-shadow: 0 0 10px rgba(255, 61, 190, 0.4); }
+    .nowrap { white-space: nowrap; }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 6rem 0;
+      min-height: 85vh;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: rgba(240, 197, 18, 0.15);
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 20px rgba(240, 197, 18, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold);
+      color: var(--bg-dark);
+      box-shadow: 0 0 30px rgba(240, 197, 18, 0.5);
+    }
+
+    /* Screenshot/Device Mockup Wrapper */
+    .screenshot-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 450px; /* Portrait mobile constraints */
+      margin: 0 auto;
+      aspect-ratio: 9 / 19;
+      border-radius: 24px;
+      padding: 12px;
+      background: #000;
+      box-shadow: 0 0 40px rgba(255, 61, 190, 0.2), inset 0 0 0 2px rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .screenshot-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(45deg, var(--cyan), var(--magenta));
+      z-index: -1;
+      border-radius: 26px;
+      opacity: 0.5;
+      animation: pulse 3s infinite alternate;
+    }
+
+    /* CSS Animated Placeholder Graphic */
+    .mock-web {
+      width: 2px;
+      height: 400px;
+      background: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan);
+      position: absolute;
+      top: 0;
+      transform-origin: top center;
+      animation: swing 2.5s infinite ease-in-out alternate;
+    }
+
+    .mock-spider {
+      font-size: 4rem;
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 0 15px var(--gold));
+    }
+
+    .coming-soon-badge {
+      margin-top: auto;
+      margin-bottom: 3rem;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .coming-soon-badge h3 {
+      color: var(--cyan);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px rgba(61, 255, 170, 0.5);
+    }
+
+    .coming-soon-badge p {
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-mono);
+      letter-spacing: 2px;
+    }
+
+    /* Features Grid */
+    .features {
+      padding: 6rem 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.2);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-radius: 16px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.06);
+      border-color: var(--cyan);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--cyan);
+    }
+
+    .card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.7; }
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(-25deg); }
+      100% { transform: rotate(25deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        margin: 0 auto 2.5rem auto;
+      }
+      .screenshot-wrapper {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a href="#" class="logo">🕸️ SPIDERSLING</a>
+      <!-- <a href="#download" class="btn btn-primary" style="padding: 0.6rem 1.5rem;">GET ALERTS</a> -->
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h2 class="accent-cyan" style="font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 2px;">WEB-SLINGING ARCADE ACTION</h2>
+        <h1>Master the <br><span class="accent-magenta nowrap">Perfect Swing</span></h1>
+        <p>Hold to grapple, release to fly. Navigate brutal neon obstacles, dodge buzzsaws, and build massive combos in this physics-driven endless runner.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <!-- <a href="#download" </a>--><span class="btn btn-primary">COMING TO APP STORES</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="download">
+        <div class="screenshot-wrapper">
+          <!-- Animated CSS mock-up replacing the game embed -->
+          <div class="mock-web">
+            <div class="mock-spider">🕷️</div>
+          </div>
+          <div class="coming-soon-badge">
+            <h3>COMING SOON</h3>
+            <p>iOS & ANDROID</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Deep <span class="accent-cyan">Mechanics</span></h2>
+      <div class="grid">
+        <div class="card">
+          <h3>🕷️ Pure Physics</h3>
+          <p>Powered by Matter.js. Momentum is everything. Calculate your trajectory, manage your kinetic energy, and pull off daring low-altitude swings to maximize your speed.</p>
+        </div>
+        <div class="card">
+          <h3>🛒 In-Game Economy</h3>
+          <p>Collect flies to purchase permanent upgrades. Increase your web reach, upgrade your top speed, expand your fly magnet radius, or buy extra shields to survive crashes.</p>
+        </div>
+        <div class="card">
+          <h3>🎨 Unlockable Skins</h3>
+          <p>Complete daily missions and hit milestones to unlock custom spider skins. From the fiery "Fire" skin to the elusive "Ghost" and "Void" variants, each features custom particle effects.</p>
+        </div>
+        <div class="card">
+          <h3>🎵 Procedural Audio</h3>
+          <p>No audio files required. The entire soundtrack and every sound effect is synthesized dynamically in real-time, adjusting tempo as you speed up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>SpiderSling Mobile App — Coming Soon.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

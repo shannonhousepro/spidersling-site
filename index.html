@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpiderSling | Official Game</title>
-  <!-- <title>SpiderSling | Endless Grappling Arcade</title> -->
+  <title>SpiderSling | Endless Grappling Arcade</title>
   <style>
     :root {
       --bg-dark: #06061a;
@@ -46,31 +45,20 @@
       margin-bottom: 1rem;
       letter-spacing: -2px;
     }
-    
+
     .accent-cyan { color: var(--cyan); text-shadow: 0 0 10px rgba(61, 255, 170, 0.4); }
     .accent-magenta { color: var(--magenta); text-shadow: 0 0 10px rgba(255, 61, 190, 0.4); }
     .nowrap { white-space: nowrap; }
-
-    p { 
+	
+	p { 
       line-height: 1.0;
       color: #aaddff; 
-    }
-
-    a { 
+	}
+	
+	a { 
       color: #3df0ff; 
       text-decoration: none; 
       font-weight: bold; 
-    }
-    
-    a:hover { 
-      text-decoration: underline; 
-    }
-    
-    .links { 
-      margin-top: 30px; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 15px; 
     }
 
     /* Layout */
@@ -94,11 +82,6 @@
       font-weight: bold;
       color: var(--cyan);
       text-decoration: none;
-    }
-
-    .text {
-      line-height: 1.0;
-      color: #aaddff; 
     }
 
     /* Hero Section */
@@ -142,6 +125,17 @@
       color: var(--bg-dark);
       box-shadow: 0 0 30px rgba(240, 197, 18, 0.5);
     }
+	
+	a:hover { 
+      text-decoration: underline; 
+    }
+	    
+.links { 
+      margin-top: 30px; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 15px; 
+    }
 
     /* Screenshot/Device Mockup Wrapper */
     .screenshot-wrapper {
@@ -175,7 +169,7 @@
     /* CSS Animated Placeholder Graphic */
     .mock-web {
       width: 2px;
-      height: 300px;
+      height: 400px;
       background: var(--cyan);
       box-shadow: 0 0 15px var(--cyan);
       position: absolute;
@@ -295,26 +289,20 @@
 </head>
 <body>
 
-  <!-- <div class="container">
+  <div class="container">
     <header>
-      <a href="#" class="logo">🕸️ SPIDERSLING</a>
-      <!-- <a href="#download" class="btn btn-primary" style="padding: 0.6rem 1.5rem;">GET ALERTS</a> -->
-    
-    <!-- </header> -->
-    <div class="container">
-      <br><br>
         <p style="font-size: 4rem; margin-bottom: 0rem; letter-spacing: 2px;">🕷️ <a href="#" class="logo" style="font-size: 4rem; margin-bottom: 0rem; letter-spacing: 2px;">SPIDERSLING</a></p>
+    </header>
 
     <section class="hero">
       <div class="hero-content">
         <h2 class="accent-cyan" style="font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 2px;">WEB-SLINGING ARCADE ACTION</h2>
-        <h1>Master the<br><span class="accent-magenta">Perfect Swing</span></h1>
-        <div class="container">
-          <div class="container"><p>Hold to grapple, release to fly. Navigate brutal neon obstacles, dodge buzzsaws, and build massive combos in this physics-driven endless runner.</p>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+        <h1>Master the <br><span class="accent-magenta nowrap">Perfect Swing</span></h1>
+        <p>Hold to grapple, release to fly. Navigate brutal neon obstacles, dodge buzzsaws, and build massive combos in this physics-driven endless runner.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
           <!-- <a href="#download" </a>--><span class="btn btn-primary">COMING TO APP STORES</span>
         </div>
-      </div> 
+      </div>
 
       <div class="hero-visual" id="download">
         <div class="screenshot-wrapper">
@@ -354,7 +342,7 @@
       </div>
     </div>
   </section>
-
+  
   <section>
         <div class="links">
             <center>
@@ -364,9 +352,9 @@
           <br>
         </div>
     </section>
-  
+	
   <footer>
-     <div class="container">
+    <div class="container">
       <p>SpiderSling Mobile App — Coming Soon.</p>
     </div>
   </footer>

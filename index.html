@@ -90,6 +90,20 @@
       text-decoration: none;
     }
 
+    .brand {
+      font-family: var(--font-mono);
+      font-size: clamp(1.4rem, 7.4vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      margin-bottom: 0;
+    }
+
+    .brand .logo {
+      font-size: inherit;
+      letter-spacing: inherit;
+    }
+
     /* Hero Section */
     .hero {
       display: grid;
@@ -237,7 +251,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 2rem;
     }
 
@@ -304,7 +318,7 @@
 
   <div class="container">
     <header>
-        <p style="font-size: 4rem; margin-bottom: 0rem; letter-spacing: 2px;">🕷️ <a href="#" class="logo" style="font-size: 4rem; margin-bottom: 0rem; letter-spacing: 2px;">SPIDERSLING</a></p>
+        <p class="brand">🕷️ <a href="#" class="logo">SPIDERSLING</a></p>
     </header>
 
     <section class="hero">

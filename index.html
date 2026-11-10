@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpiderSling | Endless Grappling Arcade</title>
+  <title>SpiderSling | Endless Grappling Arcade — Now on Google Play</title>
+  <meta name="description" content="SpiderSling is a physics-driven, web-slinging endless runner. Free to play now on Google Play for Android — iOS coming soon.">
+  <meta property="og:title" content="SpiderSling — Now on Google Play">
+  <meta property="og:description" content="Hold to grapple, release to fly. Free to play now on Android — iOS coming soon.">
+  <meta property="og:url" content="https://shannonhousepro.github.io/spidersling-site/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shannonhousepro.github.io/spidersling-site/images/spidersling-gameplay.jpg">
   <style>
     :root {
       --bg-dark: #06061a;
@@ -125,6 +131,42 @@
       color: var(--bg-dark);
       box-shadow: 0 0 30px rgba(240, 197, 18, 0.5);
     }
+
+    .store-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .play-badge {
+      display: inline-block;
+      line-height: 0;
+    }
+
+    .play-badge:hover { text-decoration: none; }
+
+    .play-badge img {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cyan);
+      border: 2px solid rgba(61, 255, 170, 0.45);
+      cursor: default;
+      font-size: 0.95rem;
+      padding: 0.8rem 1.6rem;
+    }
+
+    .trademark {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+    }
 	
 	a:hover { 
       text-decoration: underline; 
@@ -166,45 +208,18 @@
       animation: pulse 3s infinite alternate;
     }
 
-    /* CSS Animated Placeholder Graphic */
-    .mock-web {
-      width: 2px;
-      height: 400px;
-      background: var(--cyan);
-      box-shadow: 0 0 15px var(--cyan);
-      position: absolute;
-      top: 0;
-      transform-origin: top center;
-      animation: swing 2.5s infinite ease-in-out alternate;
+    .screenshot-wrapper a {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
-    .mock-spider {
-      font-size: 4rem;
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      filter: drop-shadow(0 0 15px var(--gold));
-    }
-
-    .coming-soon-badge {
-      margin-top: auto;
-      margin-bottom: 3rem;
-      text-align: center;
-      z-index: 2;
-    }
-
-    .coming-soon-badge h3 {
-      color: var(--cyan);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 15px rgba(61, 255, 170, 0.5);
-    }
-
-    .coming-soon-badge p {
-      color: rgba(255,255,255,0.7);
-      font-family: var(--font-mono);
-      letter-spacing: 2px;
+    .screenshot-wrapper img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
     }
 
     /* Features Grid */
@@ -267,11 +282,6 @@
       100% { opacity: 0.7; }
     }
 
-    @keyframes swing {
-      0% { transform: rotate(-25deg); }
-      100% { transform: rotate(25deg); }
-    }
-
     /* Responsive */
     @media (max-width: 900px) {
       .hero {
@@ -280,6 +290,9 @@
       }
       .hero-content p {
         margin: 0 auto 2.5rem auto;
+      }
+      .store-ctas {
+        justify-content: center;
       }
       .screenshot-wrapper {
         margin-top: 2rem;
@@ -296,24 +309,22 @@
 
     <section class="hero">
       <div class="hero-content">
-        <h2 class="accent-cyan" style="font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 2px;">WEB-SLINGING ARCADE ACTION</h2>
+        <h2 class="accent-cyan" style="font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 2px;">NOW ON GOOGLE PLAY</h2>
         <h1>Master the <br><span class="accent-magenta nowrap">Perfect Swing</span></h1>
         <p>Hold to grapple, release to fly. Navigate brutal neon obstacles, dodge buzzsaws, and build massive combos in this physics-driven endless runner.</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-          <!-- <a href="#download" </a>--><span class="btn btn-primary">COMING TO APP STORES</span>
+        <div class="store-ctas">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.shannonhouseproductions.spidersling" target="_blank" rel="noopener">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250">
+          </a>
+          <span class="btn btn-secondary">iOS — COMING SOON</span>
         </div>
       </div>
 
       <div class="hero-visual" id="download">
         <div class="screenshot-wrapper">
-          <!-- Animated CSS mock-up replacing the game embed -->
-          <div class="mock-web">
-            <div class="mock-spider">🕷️</div>
-          </div>
-          <div class="coming-soon-badge">
-            <h3>COMING SOON</h3>
-            <p>iOS & ANDROID</p>
-          </div>
+          <a href="https://play.google.com/store/apps/details?id=com.shannonhouseproductions.spidersling" target="_blank" rel="noopener">
+            <img src="images/spidersling-gameplay.jpg" alt="SpiderSling gameplay: a purple spider swinging on a web past a spiked fireball and glowing flies through a starry neon night" width="525" height="1101" loading="eager">
+          </a>
         </div>
       </div>
     </section>
@@ -356,7 +367,8 @@
 	
   <footer>
     <div class="container">
-      <p>SpiderSling Mobile App — Coming Soon.</p>
+      <p>SpiderSling — Available now on Google Play. iOS coming soon.</p>
+      <p class="trademark">Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </div>
   </footer>
 
